@@ -1,0 +1,269 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+:root {
+    --white: #fff;
+    --light-blue: #e9ecf8;
+    --dark-blue: #0a3871;
+    --dark-blue-hover: #356ea9;
+    --grey: #495057;
+
+    --font-family: "Inter", sans-serif;
+
+    --font-size-nav: 2rem;
+    --font-size-input: 2rem;
+    --font-size-warning: 1.5rem;
+    --font-size-info: 0.8rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--light-blue);
+    font-family: var(--font-family);
+    width: 100%;
+}
+
+header {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+}
+
+.seccion1 {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: start;
+}
+
+.text-area {
+    width: 100%;
+    height: 40vh;
+    background-color: inherit;
+    border: none;
+    color: var(--dark-blue);
+    font-size: var(--font-size-input);
+    resize: none;
+}
+
+.text-area:focus {
+    outline: none;
+}
+
+.accion-encriptacion {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.info{
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-info);
+}
+
+
+
+.botones {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+
+.btn-encriptar {
+    padding: 1.3rem 6rem;
+    border-radius: 1rem;
+    border: 1px solid var(--dark-blue);
+    background-color: var(--dark-blue);
+    color: var(--white);
+    cursor: pointer;
+}
+
+.btn-desencriptar {
+    padding: 1.3rem 6rem;
+    border-radius: 1rem;
+    border: 1px solid var(--dark-blue);
+    background-color: var(--dark-blue);
+    color: var(--white);
+    cursor: pointer;
+}
+
+@keyframes buttonHover{
+    from {background-color: var(--dark-blue)}
+
+    to {background-color: var(--dark-blue-hover);}
+}
+
+.btn-encriptar:hover {
+    animation-name: buttonHover;
+    animation-duration: 200ms;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}
+
+.btn-desencriptar:hover {
+    animation-name: buttonHover;
+    animation-duration: 200ms;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}
+
+.seccion2 {
+    width: 80%;
+    height: 50vh;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+    border-radius: 1rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.main__message-encrypted {
+    justify-content: space-between;
+    align-items: start;
+}
+
+.img-muneco{
+    width: 18rem;
+}
+
+.mensaje-info {
+    font-weight: bold;
+    font-size: var(--font-size-warning);
+}
+
+.mensaje-ingreso{
+    font-weight: var(--font-size-info);
+}
+
+.message__textEncrypted {
+    width: 100%;
+    height: 40vh;
+    border: none;
+    font-size: var(--font-size-input);
+    resize: none;
+}
+
+.message__textEncrypted:focus {
+    outline: none;
+}
+
+.btn-copiar {
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    border: 1px solid var(--dark-blue);
+    background-color: var(--dark-blue);
+    color: var(--white);
+    cursor: pointer;
+    display: none; /* Inicialmente oculto */
+}
+
+.btn-copiar:hover {
+    animation-name: buttonHover;
+    animation-duration: 200ms;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}
+/* agragacion de boton de limpiar */
+.btn-limpiar {
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    border: 1px solid var(--dark-blue);
+    background-color: var(--dark-blue);
+    color: var(--white);
+    cursor: pointer;
+    display: none; /* Inicialmente oculto */
+}
+
+.btn-limpiar:hover {
+    animation-name: buttonHover;
+    animation-duration: 200ms;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}
+
+/* Contenedor para los botones Copiar y Limpiar */
+.botones-copiar-limpiar {
+    display: flex;
+    justify-content: center;
+    gap: 5rem; /* Espacio entre los botones */
+    margin-top: 1rem;
+}
+
+.mensaje {
+    display: none; /* Inicialmente oculto */
+    width: 100%;
+    height: 40vh;
+    border: none;
+    font-size: var(--font-size-input);
+    resize: none;
+    color: var(--dark-blue);
+}
+
+.mensaje:focus {
+    outline: none;
+}
+
+
+@media (min-width: 768px) {
+    header {
+        flex-direction: row;
+    }
+
+    .seccion1 {
+        width: 80%;
+        height: 70vh;
+    }
+
+    .text-area{
+        height: 70%;
+    }
+
+    .botones {
+        flex-direction: row;
+    }
+
+    .seccion2 {
+        height: 70vh;
+    }
+}
+
+@media (min-width: 1440px) {
+    main {
+        height: 85vh;
+        flex-direction: row;
+    }
+
+    .seccion1 {
+        width: 40%;
+        height: 70vh;
+    }
+
+    .seccion2{
+        width: 30%;
+    }
+}
