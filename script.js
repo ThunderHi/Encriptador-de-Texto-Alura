@@ -4,6 +4,7 @@ const muneco = document.querySelector(".img-muneco");
 const mensajeInfo = document.querySelector(".mensaje-info");
 const mensajeIngreso = document.querySelector(".mensaje-ingreso");
 const btnCopiarElem = document.querySelector(".btn-copiar");
+const btnLimpiarElem = document.querySelector(".btn-limpiar");
 
 function validarTexto(texto) {
     const regex = /^[a-z\s]+$/;
@@ -14,20 +15,12 @@ function btnEncriptar() {
     const texto = textArea.value;
 
     if (!validarTexto(texto)) {
-        alert("Solo se permite minúsculas y sin acento.");
+        alert("Solo se permite minúsculas, No acentos ni caracteres especiaes");
         return;
     }
 
     const textoEncriptado = encriptar(texto);
-    mensaje.value = textoEncriptado;
-
-    textArea.value = "";
-    mensaje.style.display = "block";
-    muneco.style.display = "none";
-    mensajeInfo.style.display = "none";
-    mensajeIngreso.style.display = "none";
-    btnCopiarElem.style.display = "block";
-    document.querySelector(".btn-limpiar").style.display = "block"; // Mostrar botón "Limpiar"
+    mostrarResultado(textoEncriptado);
 }
 
 function encriptar(stringEncriptada) {
@@ -43,9 +36,15 @@ function encriptar(stringEncriptada) {
 }
 
 function btnDesencriptar() {
-    const textoEncriptado = desencriptar(textArea.value);
-    mensaje.value = textoEncriptado;
-    textArea.value = "";
+    const texto = textArea.value;
+
+    if (!validarTexto(texto)) {
+        alert("Solo se permite minúsculas y sin acento.");
+        return;
+    }
+
+    const textoDesencriptado = desencriptar(texto);
+    mostrarResultado(textoDesencriptado);
 }
 
 function desencriptar(stringDesencriptada) {
@@ -60,6 +59,17 @@ function desencriptar(stringDesencriptada) {
     return stringDesencriptada;
 }
 
+function mostrarResultado(texto) {
+    mensaje.value = texto;
+    textArea.value = "";
+    mensaje.style.display = "block";
+    muneco.style.display = "none";
+    mensajeInfo.style.display = "none";
+    mensajeIngreso.style.display = "none";
+    btnCopiarElem.style.display = "block";
+    btnLimpiarElem.style.display = "block";
+}
+
 function btnCopiar() {
     mensaje.select();
     mensaje.setSelectionRange(0, 999999);
@@ -69,10 +79,11 @@ function btnCopiar() {
 
 function btnLimpiar() {
     // Restaurar la sección 2 a su estado inicial
+    mensaje.value = ""; // Limpia el contenido del mensaje
     mensaje.style.display = "none";
     muneco.style.display = "block";
     mensajeInfo.style.display = "block";
     mensajeIngreso.style.display = "block";
     btnCopiarElem.style.display = "none";
-    document.querySelector(".btn-limpiar").style.display = "none";
+    btnLimpiarElem.style.display = "none";
 }
